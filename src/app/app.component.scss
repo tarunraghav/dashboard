@@ -1,0 +1,54 @@
+.mat-toolbar.mat-primary {
+    background: #ffffff;
+    color: white;
+}
+
+.mat-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mx-width {
+    max-width: 100%;
+}
+
+.example-card {
+    margin-bottom: 8px;
+}
+
+.img-size {
+    height: 1rem;
+    width: 1rem;
+}
+
+.font-style {
+    font-size: 13px;
+}
+
+.clr1 {
+    color: red
+}
+
+.clr2 {
+    color: green
+}
+
+.progress {
+    height: 0.5rem;
+}
+.bg-grey{
+    background-color: #5050501a;
+}
+.example-icon{
+    color: black;
+}
+.text-black {
+    font-size: 1.2rem;
+}

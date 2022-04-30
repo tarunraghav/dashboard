@@ -1,0 +1,166 @@
+<div class="container mx-width d-flex bg-light">
+  <div class="col-2 p-0">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-10 bg-light">
+
+    <mat-card class="p-0 mb-3">
+      <mat-toolbar color="primary">
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon bg-transparent" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon bg-transparent" aria-label="Example icon-button with share icon">
+          <mat-icon>settings</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon bg-transparent favorite-icon"
+          aria-label="Example icon-button with heart icon">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </mat-toolbar>
+    </mat-card>
+    <div class="d-flex col-12 p-0">
+      <div class="col-4 pl-0">
+        <mat-card class="example-card d-flex bg-white">
+          <mat-card-title-group class="col-8 p-0">
+            <mat-card-title class="text-black">Alerts</mat-card-title>
+            <mat-card-subtitle>
+              <div class="text-secondary">
+                Current Alerts
+                <span class="h2 pt-2 d-block">2,45,096</span>
+              </div>
+              <div class="font-style pt-2 ">
+                <img class="img-size" src="assets/up-24.png" alt="">Positive Alert
+                <img class="img-size" src="assets/down.png" alt="">Negative Alert
+              </div>
+            </mat-card-subtitle>
+            <div></div>
+          </mat-card-title-group>
+          <div class="" >
+             <canvas width="110px" height="140px"
+            baseChart
+            [chartType]="'bar'"
+            [datasets]="chartData"
+            [labels]="labels"
+            [options]="chartOptions"
+            [legend]="false"
+            [colors]="colors"
+            >
+        </canvas></div>
+        </mat-card>
+      </div>
+      <div class="col-4 pl-0">
+        <mat-card class="example-card d-flex bg-white">
+          <mat-card-title-group class="col-7 p-0">
+            <mat-card-title class="text-black">Reports</mat-card-title>
+            <mat-card-subtitle>
+              <div class="text-secondary">
+                All Generated Reports
+                <span class="h2 pt-2 d-block">3,45,678</span>
+              </div>
+              <div class="font-style pt-2 ">
+                <img class="img-size" src="assets/up-24.png" alt="">Last Month
+                <img class="img-size" src="assets/down.png" alt="">This Month
+              </div>
+            </mat-card-subtitle>
+          </mat-card-title-group>
+          <div class="">
+            <circle-progress [percent]="75" [radius]="55" [outerStrokeWidth]="10" [outerStrokeColor]="'#78C000'"
+            [showInnerStroke]="false" [animation]="false" [showSubtitle]="false" [showTitle]="false" [showUnits]="false">
+          </circle-progress>
+          </div>
+        </mat-card>
+      </div>
+      <div class="col-4 pl-0">
+        <mat-card class="example-card d-flex bg-white">
+          <mat-card-title-group class="col-7 p-0">
+            <mat-card-title class="text-black">Registered KYC</mat-card-title>
+            <mat-card-subtitle>
+              <div class="text-secondary">
+                KYC Information
+                <span class="h2 pt-2 d-block">5,56,678</span>
+              </div>
+              <div class="font-style pt-2 ">
+                <img class="img-size" src="assets/up-24.png" alt="">Completed
+                <img class="img-size" src="assets/down.png" alt="">Pending
+              </div>
+            </mat-card-subtitle>
+          </mat-card-title-group>
+          <div class="">
+            <circle-progress [percent]="60" [radius]="55" [outerStrokeWidth]="10" [outerStrokeColor]="'#78C000'"
+              [showInnerStroke]="false" [animation]="false" [showSubtitle]="false" [showTitle]="false" [showUnits]="false"
+              [clockwise]="false">
+            </circle-progress>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="d-flex mt-3">
+      <div class="chart-wrapper bg-white col-8 pt-3 pb-3">
+        <div class="pb-3 d-flex justify-content-between">
+          <span class="text-black">E-mandate Statistics</span>
+          <div class="d-flex">
+            <span class="d-flex pr-3" *ngFor="let value of legends; let k=index;">
+              <span class="material-icons clr{{k+1}}">fiber_manual_record</span>{{value}}
+            </span>
+          </div>
+        </div>
+        <canvas height="270" width="800" baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+          [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </div>
+      <div class="col-4">
+        <mat-card class="bg-white">
+          <mat-card-title-group>
+            <mat-card-title class="text-black font-weight-bold">Current Running Event</mat-card-title>
+          </mat-card-title-group>
+          <div class="border p-2" *ngFor="let event of events">
+            <div class="d-flex justify-content-between">
+              <span class="font-weight-bold">{{event.eventName}}</span>
+              <span>{{event.time}}</span>
+            </div>
+            <div class="text-secondary" [ngClass]="{'text-success': event.activity==='Done'}">
+              {{event.activity}}
+            </div>
+          </div>
+          <div class="pt-3 d-flex justify-content-center">
+            Expand more<mat-icon>keyboard_arrow_down</mat-icon>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <table class="table bg-white mt-3">
+      <thead>
+        <tr class="bg-grey">
+          <th>Name</th>
+          <th>Progress</th>
+          <th>Timestamp</th>
+          <th>Origin</th>
+          <th>Mobile</th>
+          <th>Remark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tableData">
+          <td class="font-weight-bold"><img class="pr-2" src="assets/avatar.png" alt="">{{item.event}}</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" [ngClass]="{'bg-success': item.progress>50, 'bg-danger': item.progress<= 50}"
+                role="progressbar" [style.width]=" item.progress+'%'">
+              </div>
+             
+            </div>
+           <span> {{item.progress}}%</span>
+          </td>
+          <td>{{item.timestamp}}</td>
+          <td>{{item.origin}}</td>
+          <td>{{item.mobile}}</td>
+          <td class="d-flex">{{item.remark}}<mat-icon class="pl-2">visibility</mat-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
